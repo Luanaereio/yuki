@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yuki Design de Interiores</title>
+<meta name="description" content="Yuki Design de Interiores: projetos residenciais, comerciais e corporativos que unem funcionalidade, beleza e bem-estar. Do planejamento à execução, cada detalhe é pensado para transformar o seu espaço.">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&family=Parisienne&display=swap">
+<style>
+  :root {
+    --escuro: #151311;
+    --escuro-2: #1f1b18;
+    --creme: #f4f0ea;
+    --areia: #ece7df;
+    --tinta: #1e1b18;
+    --cinza: #6a635b;
+    --cinza-claro: #9a938a;
+    --vermelho: #d8262c;
+    --linha: rgba(30, 27, 24, 0.14);
+    --linha-clara: rgba(255, 255, 255, 0.28);
+    --branco: #ffffff;
+    --margem: clamp(16px, 4vw, 56px);
+    --largura: 1240px;
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans: "Manrope", "Segoe UI", Arial, sans-serif;
+    --script: "Parisienne", "Brush Script MT", cursive;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+  body { margin: 0; background: var(--creme); color: var(--tinta); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--vermelho); outline-offset: 3px; }
+  .miolo { width: min(var(--largura), 100% - 2 * var(--margem)); margin-inline: auto; }
+
+  .rotulo { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cinza); margin: 0 0 18px; }
+  .serif { font-family: var(--serif); font-weight: 500; line-height: 1.08; letter-spacing: -0.005em; text-wrap: balance; margin: 0; }
+  .botao { display: inline-flex; align-items: center; gap: 12px; padding: 13px 22px 12px; border: 1px solid currentColor; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; transition: background .25s, color .25s, border-color .25s; }
+  .botao svg { width: 14px; height: 14px; flex: none; }
+  .botao:hover { background: var(--tinta); color: var(--creme); border-color: var(--tinta); }
+  .botao.claro { color: var(--branco); }
+  .botao.claro:hover { background: var(--branco); color: var(--tinta); border-color: var(--branco); }
+  .botao.cheio { background: var(--branco); color: var(--tinta); border-color: var(--branco); }
+  .botao.cheio:hover { background: transparent; color: var(--branco); }
+
+  /* Cabecalho sobre o heroi */
+  .topo { position: absolute; inset: 0 0 auto 0; z-index: 5; color: var(--branco); }
+  .topo .miolo { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; height: 92px; }
+  .marca { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-bottom: 10px; position: relative; }
+  .marca img { height: 34px; width: auto; }
+  .marca small { font-size: 11px; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); padding-left: 2px; }
+  .marca::after { content: ""; position: absolute; left: 0; bottom: 0; width: 112px; height: 1px; background: var(--linha-clara); }
+  .menu { display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
+  .menu a { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 10px 0; position: relative; opacity: 0.92; }
+  .menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: var(--branco); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
+  .menu a:hover::after, .menu a[aria-current]::after { transform: scaleX(1); }
+  .abrir-menu { display: none; width: 44px; height: 44px; border: 1px solid var(--linha-clara); border-radius: 999px; background: transparent; color: var(--branco); cursor: pointer; align-items: center; justify-content: center; }
+  .abrir-menu svg { width: 20px; height: 20px; }
+
+  /* Heroi */
+  .heroi { position: relative; min-height: clamp(560px, 62vw, 720px); display: flex; align-items: center; color: var(--branco); background: var(--escuro); overflow: hidden; isolation: isolate; }
+  .heroi .fundo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+  .heroi::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(14,12,11,0.78) 0%, rgba(14,12,11,0.55) 38%, rgba(14,12,11,0.18) 70%, rgba(14,12,11,0.35) 100%), linear-gradient(180deg, rgba(14,12,11,0.45) 0%, rgba(14,12,11,0) 30%); }
+  .heroi .miolo { display: grid; grid-template-columns: minmax(0, 520px) 1fr; align-items: end; gap: 32px; padding-top: 120px; padding-bottom: 56px; }
+  .heroi .rotulo { color: rgba(255,255,255,0.78); }
+  .heroi h1 { font-size: clamp(40px, 5.2vw, 62px); max-width: 11ch; }
+  .heroi p { max-width: 36ch; margin: 26px 0 32px; font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.9); }
+  .assinatura { justify-self: end; align-self: end; text-align: center; font-family: var(--script); font-size: clamp(28px, 2.6vw, 34px); line-height: 1.15; color: rgba(255,255,255,0.95); padding-bottom: 6px; }
+  .assinatura svg { width: 22px; height: 22px; display: block; margin: 8px auto 0; opacity: 0.9; }
+
+  /* Faixa de categorias */
+  .faixa { background: var(--areia); }
+  .faixa ul { display: grid; grid-template-columns: repeat(6, 1fr); margin: 0; padding: 30px 0 26px; list-style: none; }
+  .faixa li { text-align: center; padding: 0 10px; border-left: 1px solid var(--linha); }
+  .faixa li:first-child { border-left: 0; }
+  .faixa a { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.25; }
+  .faixa .circulo { width: 60px; height: 60px; border-radius: 50%; background: #e3dcd2; display: grid; place-items: center; transition: background .25s; }
+  .faixa .circulo svg { width: 24px; height: 24px; }
+  .faixa a:hover .circulo { background: #d7cfc3; }
+  .faixa .caixa { text-transform: uppercase; }
+  .ponto { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--vermelho); vertical-align: middle; margin-left: 4px; }
+
+  /* Projetos */
+  .projetos .miolo { display: grid; grid-template-columns: minmax(200px, 250px) 1fr; gap: clamp(24px, 4vw, 64px); padding: 56px 0 56px; align-items: start; }
+  .projetos h2 { font-size: clamp(36px, 3.6vw, 46px); }
+  .projetos p { color: var(--cinza); max-width: 30ch; margin: 24px 0 36px; font-size: 14px; }
+  .grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .grade li { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #d9d2c8; }
+  .grade img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .grade li:hover img { transform: scale(1.04); }
+  .grade a { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 14px 14px 12px; color: var(--branco); font-size: 15px; font-weight: 500; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.62) 100%); }
+  .grade a svg { width: 16px; height: 16px; flex: none; margin-bottom: 3px; }
+
+  /* Sobre */
+  .sobre { background: var(--areia); }
+  .sobre .caixa { display: grid; grid-template-columns: minmax(240px, 322px) minmax(0, 1fr) minmax(200px, 250px); align-items: center; gap: clamp(24px, 4vw, 48px); }
+  .sobre figure { margin: 0; align-self: stretch; }
+  .sobre figure img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+  .sobre .texto { padding: 40px 0; }
+  .sobre h2 { font-size: clamp(32px, 3.2vw, 40px); }
+  .sobre p { color: var(--cinza); margin: 22px 0 30px; font-size: 14px; max-width: 48ch; }
+  .valores { margin: 0; padding: 0 0 0 clamp(20px, 3vw, 40px); list-style: none; border-left: 1px solid var(--linha); align-self: center; }
+  .valores li { display: grid; grid-template-columns: 32px 1fr; align-items: center; gap: 16px; padding: 10px 0; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cinza); line-height: 1.5; }
+  .valores svg { width: 28px; height: 28px; color: var(--tinta); }
+
+  /* Chamada */
+  .chamada { position: relative; color: var(--branco); background: var(--escuro); isolation: isolate; overflow: hidden; }
+  .chamada .fundo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+  .chamada::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(12,10,9,0.66); }
+  .chamada .miolo { display: grid; grid-template-columns: minmax(180px, 260px) 1fr auto; align-items: center; gap: clamp(24px, 4vw, 56px); padding: 40px 0; }
+  .chamada .script { font-family: var(--script); font-size: clamp(32px, 3vw, 40px); line-height: 1.1; text-align: center; }
+  .chamada h2 { font-size: clamp(26px, 2.4vw, 30px); }
+  .chamada p { margin: 10px 0 0; max-width: 40ch; font-size: 14px; color: rgba(255,255,255,0.88); }
+
+  /* Rodape */
+  .rodape { background: var(--escuro); color: var(--branco); }
+  .rodape .linha-1 { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 32px; padding: 34px 0 26px; }
+  .rodape .marca::after { display: none; }
+  .rodape .marca { padding-bottom: 0; }
+  .rodape .menu { gap: 22px; }
+  .rodape .menu a { font-size: 10px; letter-spacing: 0.16em; }
+  .redes { display: flex; align-items: center; gap: 18px; }
+  .redes .icones { display: flex; gap: 14px; }
+  .redes .icones a { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; transition: background .25s; }
+  .redes .icones a:hover { background: rgba(255,255,255,0.1); }
+  .redes .icones svg { width: 18px; height: 18px; }
+  .redes .frase { display: flex; align-items: center; gap: 14px; padding-left: 18px; border-left: 1px solid var(--linha-clara); font-size: 12.5px; line-height: 1.4; max-width: 24ch; }
+  .redes .frase svg { width: 16px; height: 16px; flex: none; }
+  .rodape .linha-2 { border-top: 1px solid rgba(255,255,255,0.12); padding: 16px 0 22px; font-size: 11px; color: rgba(255,255,255,0.7); }
+
+  /* Celular e telas estreitas */
+  @media (max-width: 1100px) {
+    .projetos .miolo { grid-template-columns: 1fr; }
+    .projetos p { max-width: 52ch; }
+    .sobre .caixa { grid-template-columns: minmax(200px, 300px) 1fr; }
+    .valores { grid-column: 1 / -1; border-left: 0; padding: 0 0 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .valores li { grid-template-columns: 28px 1fr; }
+  }
+  @media (max-width: 900px) {
+    .topo .miolo { grid-template-columns: auto 1fr auto; height: 76px; }
+    .menu { display: none; }
+    .abrir-menu { display: inline-flex; justify-self: end; }
+    .topo.aberto .menu { display: flex; flex-direction: column; gap: 4px; position: absolute; left: 0; right: 0; top: 76px; padding: 12px var(--margem) 20px; background: rgba(21,19,17,0.96); border-top: 1px solid var(--linha-clara); }
+    .topo.aberto .menu a { display: block; padding: 12px 0; font-size: 12px; }
+    .topo .botao { display: none; }
+    .heroi { min-height: 0; }
+    .heroi .miolo { grid-template-columns: 1fr; padding-top: 112px; padding-bottom: 40px; gap: 24px; }
+    .heroi h1 { font-size: clamp(38px, 11vw, 48px); max-width: none; }
+    .assinatura { justify-self: start; text-align: left; }
+    .assinatura svg { margin-left: 2px; }
+    .faixa ul { grid-template-columns: repeat(3, 1fr); row-gap: 22px; padding: 24px 0; }
+    .faixa li { border-left: 0; padding: 0 6px; }
+    .faixa a { font-size: 12px; }
+    .faixa .circulo { width: 54px; height: 54px; }
+    .grade { grid-template-columns: repeat(2, 1fr); }
+    .sobre .caixa { grid-template-columns: 1fr; gap: 0; }
+    .sobre figure { margin-inline: calc(-1 * var(--margem)); }
+    .sobre figure img { min-height: 0; aspect-ratio: 16 / 10; }
+    .sobre .texto { padding: 32px 0 24px; }
+    .valores { grid-template-columns: repeat(2, 1fr); padding-bottom: 32px; }
+    .chamada .miolo { grid-template-columns: 1fr; text-align: center; gap: 18px; padding: 36px 0; }
+    .chamada p { margin-inline: auto; }
+    .chamada .botao { justify-self: center; }
+    .rodape .linha-1 { grid-template-columns: 1fr; justify-items: center; gap: 22px; text-align: center; }
+    .rodape .marca { align-items: center; }
+    .rodape .menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 20px; }
+    .redes { flex-direction: column; gap: 14px; }
+    .redes .frase { border-left: 0; padding-left: 0; justify-content: center; max-width: none; }
+    .rodape .linha-2 { text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .grade { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .grade a { font-size: 13px; padding: 10px; }
+    .faixa a { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <div class="miolo">
+    <a class="marca" href="#inicio" aria-label="Yuki Design de Interiores, início">
+      <img src="img/logo-branca.png" alt="Yuki" width="190" height="80">
+      <small>design de interiores</small>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu" id="menu">
+        <li><a href="#inicio" aria-current="page">Início</a></li>
+        <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="botao claro" href="#contato">Solicite um orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="heroi" id="inicio">
+    <img class="fundo" src="img/hero.jpg" alt="" width="2048" height="890" fetchpriority="high">
+    <div class="miolo">
+      <div>
+        <p class="rotulo">Arquitetura e interiores</p>
+        <h1 class="serif">Ambientes que combinam com seu estilo de vida</h1>
+        <p>Projetos personalizados que unem funcionalidade, beleza e bem-estar. Do planejamento à execução, cada detalhe é pensado para transformar o seu espaço.</p>
+        <a class="botao claro" href="#projetos">Conheça nossos projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="assinatura">Seu espaço,<br>do seu jeito.
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.3c0 5.4-7.5 10-7.5 10z"/></svg>
+      </p>
+    </div>
+  </section>
+
+  <section class="faixa" id="servicos" aria-label="Categorias">
+    <div class="miolo">
+      <ul>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>Obras<br>comerciais</a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11M9 21v-7h6v7"/><path d="M2 21h20"/></svg></span>Ap Itaim <span class="ponto" aria-hidden="true"></span></a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4h9v17M13 9h7v12M7 8h3M7 12h3M7 16h3M16 13h1M16 17h1M2 21h20"/></svg></span>Apartamentos</a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v5M12 18v3M8 21h8"/></svg></span><span class="caixa">Showroom</span></a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18v2H3zM5 17a7 7 0 0 1 14 0M12 7v3M10 7h4"/></svg></span><span class="caixa">Obras</span></a></li>
+        <li><a href="#depoimentos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 13.5s-3-1.9-3-4a1.6 1.6 0 0 1 3-.9 1.6 1.6 0 0 1 3 .9c0 2.1-3 4-3 4z"/></svg></span><span class="caixa">Depoimentos</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="projetos" id="projetos">
+    <div class="miolo">
+      <div>
+        <p class="rotulo">Projetos em destaque</p>
+        <h2 class="serif">Inspiração em cada detalhe.</h2>
+        <p>Confira alguns dos nossos principais projetos e veja como transformamos espaços em experiências únicas.</p>
+        <a class="botao" href="#projetos">Ver todos os projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <ul class="grade">
+        <li><img src="img/proj-1.jpg" alt="Obra comercial: sala de reuniões com mesa escura e painéis de madeira" width="904" height="688" loading="lazy"><a href="#projetos">Obra comercial <span class="ponto" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-2.jpg" alt="Apartamento Itaim: painel ripado de madeira com TV e iluminação indireta" width="912" height="688" loading="lazy"><a href="#projetos">Apartamento Itaim <span class="ponto" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-3.jpg" alt="Apartamento: escada de madeira com nicho para TV" width="864" height="688" loading="lazy"><a href="#projetos">Apartamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-4.jpg" alt="Residencial: estante de madeira com nichos" width="904" height="728" loading="lazy"><a href="#projetos">Residencial<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-5.jpg" alt="Apartamento: painel de mármore e madeira com TV" width="912" height="728" loading="lazy"><a href="#projetos">Apartamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-6.jpg" alt="Banheiro: bancada de pedra com papel de parede de folhas" width="864" height="728" loading="lazy"><a href="#projetos">Banheiro<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="miolo caixa">
+      <figure><img src="img/sobre.jpg" alt="Vaso com ramos sobre livros de arquitetura, em luz quente" width="1288" height="1064" loading="lazy"></figure>
+      <div class="texto">
+        <p class="rotulo">Sobre a Yuki Design de Interiores</p>
+        <h2 class="serif">Mais do que espaços, criamos histórias.</h2>
+        <p>A Yuki Design de Interiores é especializada em projetos residenciais, comerciais e corporativos, com foco em funcionalidade, estética e personalidade. Nosso objetivo é transformar ambientes em lugares que inspiram, acolhem e fazem sentido para você.</p>
+        <a class="botao" href="#sobre">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <ul class="valores">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12l4 5-10 11L2 9z"/><path d="M2 9h20M9 4l3 5 3-5M9 9l3 11 3-11"/></svg><span>Criatividade<br>e inovação</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Atendimento<br>personalizado</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-8 0-14 4-14 11a6 6 0 0 0 6 6c7 0 11-6 11-14z"/><path d="M4 20c4-6 8-9 13-12"/></svg><span>Funcionalidade<br>e bem-estar</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.5l-5.7 3 1.1-6.3L2.8 9.7l6.4-.9z"/></svg><span>Excelência<br>em cada detalhe</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chamada" id="contato">
+    <img class="fundo" src="img/cta.jpg" alt="" width="2048" height="256" loading="lazy">
+    <div class="miolo" id="depoimentos">
+      <p class="script">Vamos<br>conversar?</p>
+      <div>
+        <h2 class="serif">Seu projeto começa<br>com uma ideia.</h2>
+        <p>Entre em contato e vamos transformar seu espaço em realidade.</p>
+      </div>
+      <a class="botao cheio" href="#contato">Solicite um orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="miolo linha-1">
+    <a class="marca" href="#inicio" aria-label="Yuki Design de Interiores, início">
+      <img src="img/logo-branca.png" alt="Yuki" width="190" height="80">
+      <small>design de interiores</small>
+    </a>
+    <nav aria-label="Rodapé">
+      <ul class="menu">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="redes">
+      <div class="icones">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a4 4 0 0 1-2-2l1-1-1-2z"/></svg></a>
+      </div>
+      <p class="frase">Transformando espaços em novas histórias. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.3c0 5.4-7.5 10-7.5 10z"/></svg></p>
+    </div>
+  </div>
+  <div class="miolo linha-2">© 2024 Yuki Design de Interiores. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  (function () {
+    var topo = document.getElementById('topo');
+    var botao = topo.querySelector('.abrir-menu');
+    var menu = document.getElementById('menu');
+    botao.addEventListener('click', function () {
+      var aberto = topo.classList.toggle('aberto');
+      botao.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      botao.setAttribute('aria-label', aberto ? 'Fechar o menu' : 'Abrir o menu');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { topo.classList.remove('aberto'); botao.setAttribute('aria-expanded', 'false'); }
+    });
+    var secoes = ['inicio', 'sobre', 'projetos', 'servicos', 'contato'];
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    function marcar() {
+      var y = window.scrollY + 120, atual = 'inicio';
+      secoes.forEach(function (id) { var el = document.getElementById(id); if (el && el.offsetTop <= y) atual = id; });
+      links.forEach(function (a) { if (a.getAttribute('href') === '#' + atual) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    }
+    window.addEventListener('scroll', marcar, { passive: true });
+    marcar();
+  })();
+</script>
+</body>
+</html>

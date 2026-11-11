@@ -51,7 +51,8 @@
   .topo { position: absolute; inset: 0 0 auto 0; z-index: 5; color: var(--branco); }
   .topo .miolo { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; height: 92px; }
   .marca { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-bottom: 10px; position: relative; }
-  .marca img { height: 34px; width: auto; }
+  .marca img { height: 46px; width: auto; }
+  .nowrap { white-space: nowrap; }
   .marca small { font-size: 11px; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); padding-left: 2px; }
   .marca::after { content: ""; position: absolute; left: 0; bottom: 0; width: 112px; height: 1px; background: var(--linha-clara); }
   .menu { display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
@@ -62,15 +63,15 @@
   .abrir-menu svg { width: 20px; height: 20px; }
 
   /* Heroi */
-  .heroi { position: relative; min-height: clamp(560px, 62vw, 720px); display: flex; align-items: center; color: var(--branco); background: var(--escuro); overflow: hidden; isolation: isolate; }
-  .heroi .fundo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
-  .heroi::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(14,12,11,0.78) 0%, rgba(14,12,11,0.55) 38%, rgba(14,12,11,0.18) 70%, rgba(14,12,11,0.35) 100%), linear-gradient(180deg, rgba(14,12,11,0.45) 0%, rgba(14,12,11,0) 30%); }
-  .heroi .miolo { display: grid; grid-template-columns: minmax(0, 520px) 1fr; align-items: end; gap: 32px; padding-top: 120px; padding-bottom: 56px; }
+  .heroi { position: relative; min-height: clamp(520px, 44vw, 640px); display: flex; align-items: center; color: var(--branco); background: #171412; overflow: hidden; isolation: isolate; }
+  .heroi .fundo { position: absolute; top: 0; right: 0; bottom: 0; z-index: -2; width: 76%; height: 100%; object-fit: cover; object-position: 55% 50%; }
+  .heroi::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #171412 0%, #171412 18%, rgba(23,20,18,0.92) 27%, rgba(23,20,18,0.62) 38%, rgba(23,20,18,0.28) 56%, rgba(23,20,18,0.12) 78%, rgba(23,20,18,0.4) 100%), linear-gradient(180deg, rgba(14,12,11,0.5) 0%, rgba(14,12,11,0) 32%); }
+  .heroi .miolo { display: grid; grid-template-columns: minmax(0, 560px) 1fr; align-items: end; gap: 32px; padding-top: 116px; padding-bottom: 50px; }
   .heroi .rotulo { color: rgba(255,255,255,0.78); }
-  .heroi h1 { font-size: clamp(40px, 5.2vw, 62px); max-width: 11ch; }
-  .heroi p { max-width: 36ch; margin: 26px 0 32px; font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.9); }
-  .assinatura { justify-self: end; align-self: end; text-align: center; font-family: var(--script); font-size: clamp(28px, 2.6vw, 34px); line-height: 1.15; color: rgba(255,255,255,0.95); padding-bottom: 6px; }
-  .assinatura svg { width: 22px; height: 22px; display: block; margin: 8px auto 0; opacity: 0.9; }
+  .heroi h1 { font-size: clamp(40px, 4.4vw, 58px); text-wrap: initial; }
+  .heroi p { max-width: 38ch; margin: 26px 0 32px; font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.9); }
+  .assinatura { justify-self: end; align-self: end; text-align: center; font-family: var(--script); font-size: clamp(34px, 3.2vw, 44px); line-height: 1.1; color: rgba(255,255,255,0.95); padding-bottom: 6px; margin: 0; }
+  .assinatura svg { width: 26px; height: 26px; display: block; margin: 10px auto 0; opacity: 0.9; }
 
   /* Faixa de categorias */
   .faixa { background: var(--areia); }
@@ -97,7 +98,7 @@
 
   /* Sobre */
   .sobre { background: var(--areia); }
-  .sobre .caixa { display: grid; grid-template-columns: minmax(240px, 322px) minmax(0, 1fr) minmax(200px, 250px); align-items: center; gap: clamp(24px, 4vw, 48px); }
+  .sobre .caixa { display: grid; width: 100%; margin: 0; padding-right: max(var(--margem), calc((100% - var(--largura)) / 2)); grid-template-columns: minmax(240px, calc(max(var(--margem), (100% - var(--largura)) / 2) + 322px)) minmax(0, 1fr) minmax(200px, 250px); align-items: center; gap: clamp(24px, 4vw, 48px); }
   .sobre figure { margin: 0; align-self: stretch; }
   .sobre figure img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
   .sobre .texto { padding: 40px 0; }
@@ -136,7 +137,7 @@
   @media (max-width: 1100px) {
     .projetos .miolo { grid-template-columns: 1fr; }
     .projetos p { max-width: 52ch; }
-    .sobre .caixa { grid-template-columns: minmax(200px, 300px) 1fr; }
+    .sobre .caixa { grid-template-columns: minmax(200px, calc(max(var(--margem), (100% - var(--largura)) / 2) + 300px)) 1fr; }
     .valores { grid-column: 1 / -1; border-left: 0; padding: 0 0 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .valores li { grid-template-columns: 28px 1fr; }
   }
@@ -148,8 +149,10 @@
     .topo.aberto .menu a { display: block; padding: 12px 0; font-size: 12px; }
     .topo .botao { display: none; }
     .heroi { min-height: 0; }
+    .heroi .fundo { width: 100%; object-position: 62% 50%; }
+    .heroi::before { background: linear-gradient(90deg, rgba(23,20,18,0.72) 0%, rgba(23,20,18,0.55) 50%, rgba(23,20,18,0.35) 100%), linear-gradient(180deg, rgba(14,12,11,0.5) 0%, rgba(14,12,11,0) 32%); }
     .heroi .miolo { grid-template-columns: 1fr; padding-top: 112px; padding-bottom: 40px; gap: 24px; }
-    .heroi h1 { font-size: clamp(38px, 11vw, 48px); max-width: none; }
+    .heroi h1 { font-size: clamp(36px, 10.5vw, 46px); }
     .assinatura { justify-self: start; text-align: left; }
     .assinatura svg { margin-left: 2px; }
     .faixa ul { grid-template-columns: repeat(3, 1fr); row-gap: 22px; padding: 24px 0; }
@@ -157,11 +160,10 @@
     .faixa a { font-size: 12px; }
     .faixa .circulo { width: 54px; height: 54px; }
     .grade { grid-template-columns: repeat(2, 1fr); }
-    .sobre .caixa { grid-template-columns: 1fr; gap: 0; }
-    .sobre figure { margin-inline: calc(-1 * var(--margem)); }
+    .sobre .caixa { grid-template-columns: 1fr; gap: 0; padding-right: 0; }
     .sobre figure img { min-height: 0; aspect-ratio: 16 / 10; }
-    .sobre .texto { padding: 32px 0 24px; }
-    .valores { grid-template-columns: repeat(2, 1fr); padding-bottom: 32px; }
+    .sobre .texto { padding: 32px var(--margem) 24px; }
+    .valores { grid-template-columns: repeat(2, 1fr); padding: 0 var(--margem) 32px; }
     .chamada .miolo { grid-template-columns: 1fr; text-align: center; gap: 18px; padding: 36px 0; }
     .chamada p { margin-inline: auto; }
     .chamada .botao { justify-self: center; }
@@ -208,7 +210,7 @@
     <div class="miolo">
       <div>
         <p class="rotulo">Arquitetura e interiores</p>
-        <h1 class="serif">Ambientes que combinam com seu estilo de vida</h1>
+        <h1 class="serif">Ambientes que<br>combinam com<br>seu estilo de vida</h1>
         <p>Projetos personalizados que unem funcionalidade, beleza e bem-estar. Do planejamento à execução, cada detalhe é pensado para transformar o seu espaço.</p>
         <a class="botao claro" href="#projetos">Conheça nossos projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -222,7 +224,7 @@
     <div class="miolo">
       <ul>
         <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>Obras<br>comerciais</a></li>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11M9 21v-7h6v7"/><path d="M2 21h20"/></svg></span>Ap Itaim <span class="ponto" aria-hidden="true"></span></a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11M9 21v-7h6v7"/><path d="M2 21h20"/></svg></span><span class="nowrap">Ap Itaim <span class="ponto" aria-hidden="true"></span></span></a></li>
         <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4h9v17M13 9h7v12M7 8h3M7 12h3M7 16h3M16 13h1M16 17h1M2 21h20"/></svg></span>Apartamentos</a></li>
         <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v5M12 18v3M8 21h8"/></svg></span><span class="caixa">Showroom</span></a></li>
         <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18v2H3zM5 17a7 7 0 0 1 14 0M12 7v3M10 7h4"/></svg></span><span class="caixa">Obras</span></a></li>
@@ -240,8 +242,8 @@
         <a class="botao" href="#projetos">Ver todos os projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <ul class="grade">
-        <li><img src="img/proj-1.jpg" alt="Obra comercial: sala de reuniões com mesa escura e painéis de madeira" width="904" height="688" loading="lazy"><a href="#projetos">Obra comercial <span class="ponto" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-        <li><img src="img/proj-2.jpg" alt="Apartamento Itaim: painel ripado de madeira com TV e iluminação indireta" width="912" height="688" loading="lazy"><a href="#projetos">Apartamento Itaim <span class="ponto" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-1.jpg" alt="Obra comercial: sala de reuniões com mesa escura e painéis de madeira" width="904" height="688" loading="lazy"><a href="#projetos"><span>Obra <span class="nowrap">comercial <span class="ponto" aria-hidden="true"></span></span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><img src="img/proj-2.jpg" alt="Apartamento Itaim: painel ripado de madeira com TV e iluminação indireta" width="912" height="688" loading="lazy"><a href="#projetos"><span>Apartamento <span class="nowrap">Itaim <span class="ponto" aria-hidden="true"></span></span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
         <li><img src="img/proj-3.jpg" alt="Apartamento: escada de madeira com nicho para TV" width="864" height="688" loading="lazy"><a href="#projetos">Apartamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
         <li><img src="img/proj-4.jpg" alt="Residencial: estante de madeira com nichos" width="904" height="728" loading="lazy"><a href="#projetos">Residencial<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
         <li><img src="img/proj-5.jpg" alt="Apartamento: painel de mármore e madeira com TV" width="912" height="728" loading="lazy"><a href="#projetos">Apartamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>

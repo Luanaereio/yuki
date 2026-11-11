@@ -74,16 +74,18 @@
   .assinatura svg { width: 26px; height: 26px; display: block; margin: 10px auto 0; opacity: 0.9; }
 
   /* Faixa de categorias */
-  .faixa { background: var(--areia); }
-  .faixa ul { display: grid; grid-template-columns: repeat(6, 1fr); margin: 0; padding: 30px 0 26px; list-style: none; }
-  .faixa li { text-align: center; padding: 0 10px; border-left: 1px solid var(--linha); }
-  .faixa li:first-child { border-left: 0; }
-  .faixa a { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.25; }
-  .faixa .circulo { width: 60px; height: 60px; border-radius: 50%; background: #e3dcd2; display: grid; place-items: center; transition: background .25s; }
-  .faixa .circulo svg { width: 24px; height: 24px; }
-  .faixa a:hover .circulo { background: #d7cfc3; }
-  .faixa .caixa { text-transform: uppercase; }
-  .ponto { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--vermelho); vertical-align: middle; margin-left: 4px; }
+  .faixa { background: var(--areia); border-bottom: 1px solid var(--linha); }
+  .faixa ul { display: grid; grid-template-columns: repeat(6, 1fr); margin: 0; padding: 34px 0 30px; list-style: none; }
+  .faixa li { position: relative; text-align: center; padding: 0 10px; }
+  .faixa li + li::before { content: ""; position: absolute; left: 0; top: 18%; height: 64%; width: 1px; background: var(--linha); }
+  .faixa a { display: inline-flex; flex-direction: column; align-items: center; gap: 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.6; color: var(--cinza); transition: color .3s; }
+  .faixa .circulo { position: relative; width: 66px; height: 66px; border-radius: 50%; border: 1px solid rgba(30, 27, 24, 0.32); background: transparent; color: var(--tinta); display: grid; place-items: center; transition: background .35s, border-color .35s, color .35s, transform .35s; }
+  .faixa .circulo::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid rgba(30, 27, 24, 0.14); transition: inset .35s, border-color .35s; }
+  .faixa .circulo svg { width: 26px; height: 26px; }
+  .faixa a:hover { color: var(--tinta); }
+  .faixa a:hover .circulo { background: var(--tinta); border-color: var(--tinta); color: var(--creme); transform: translateY(-2px); }
+  .faixa a:hover .circulo::after { inset: -9px; border-color: rgba(30, 27, 24, 0.3); }
+  .ponto { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--vermelho); vertical-align: middle; margin-left: 5px; position: relative; top: -1px; }
 
   /* Projetos */
   .projetos .miolo { display: grid; grid-template-columns: minmax(200px, 250px) 1fr; gap: clamp(24px, 4vw, 64px); padding: 56px 0 56px; align-items: start; }
@@ -155,10 +157,12 @@
     .heroi h1 { font-size: clamp(36px, 10.5vw, 46px); }
     .assinatura { justify-self: start; text-align: left; }
     .assinatura svg { margin-left: 2px; }
-    .faixa ul { grid-template-columns: repeat(3, 1fr); row-gap: 22px; padding: 24px 0; }
-    .faixa li { border-left: 0; padding: 0 6px; }
-    .faixa a { font-size: 12px; }
-    .faixa .circulo { width: 54px; height: 54px; }
+    .faixa ul { grid-template-columns: repeat(3, 1fr); row-gap: 26px; padding: 28px 0 26px; }
+    .faixa li { padding: 0 6px; }
+    .faixa li + li::before { display: none; }
+    .faixa a { font-size: 10px; letter-spacing: 0.16em; gap: 12px; }
+    .faixa .circulo { width: 58px; height: 58px; }
+    .faixa .circulo::after { inset: -5px; }
     .grade { grid-template-columns: repeat(2, 1fr); }
     .sobre .caixa { grid-template-columns: 1fr; gap: 0; padding-right: 0; }
     .sobre figure img { min-height: 0; aspect-ratio: 16 / 10; }
@@ -223,12 +227,12 @@
   <section class="faixa" id="servicos" aria-label="Categorias">
     <div class="miolo">
       <ul>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>Obras<br>comerciais</a></li>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11M9 21v-7h6v7"/><path d="M2 21h20"/></svg></span><span class="nowrap">Ap Itaim <span class="ponto" aria-hidden="true"></span></span></a></li>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4h9v17M13 9h7v12M7 8h3M7 12h3M7 16h3M16 13h1M16 17h1M2 21h20"/></svg></span>Apartamentos</a></li>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v5M12 18v3M8 21h8"/></svg></span><span class="caixa">Showroom</span></a></li>
-        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18v2H3zM5 17a7 7 0 0 1 14 0M12 7v3M10 7h4"/></svg></span><span class="caixa">Obras</span></a></li>
-        <li><a href="#depoimentos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 13.5s-3-1.9-3-4a1.6 1.6 0 0 1 3-.9 1.6 1.6 0 0 1 3 .9c0 2.1-3 4-3 4z"/></svg></span><span class="caixa">Depoimentos</span></a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 5 4.5h14l1.5 5"/><path d="M3.5 9.5a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 2 0"/><path d="M5 11.5v8h14v-8M10 19.5v-5h4v5"/></svg></span>Obras<br>comerciais</a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-5.5h4v5.5"/></svg></span><span class="nowrap">Ap Itaim <span class="ponto" aria-hidden="true"></span></span></a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V5.5h9V20M13 10h7v10M3 20h18"/><path d="M7 9h3M7 12.5h3M7 16h3M16 13.5h1.5M16 17h1.5"/></svg></span>Apartamentos</a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M4 11.5a1.5 1.5 0 0 1 1.5 1.5v2h13v-2a1.5 1.5 0 0 1 3 0v4.5H4z"/><path d="M6 17.5V19.5M18 17.5V19.5"/></svg></span>Showroom</a></li>
+        <li><a href="#projetos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16.5h16"/><path d="M5.5 16.5a6.5 6.5 0 0 1 13 0"/><path d="M12 7.5v2.5M10.5 7.5h3"/><path d="M3 19h18"/></svg></span>Obras</a></li>
+        <li><a href="#depoimentos"><span class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 7.5H6.5a2 2 0 0 0-2 2v2.5h3v3a2 2 0 0 1-2 2"/><path d="M19.5 7.5h-3a2 2 0 0 0-2 2v2.5h3v3a2 2 0 0 1-2 2"/></svg></span>Depoimentos</a></li>
       </ul>
     </div>
   </section>

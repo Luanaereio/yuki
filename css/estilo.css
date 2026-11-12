@@ -218,13 +218,42 @@ button.botao:hover { background: var(--tinta); color: var(--creme); }
 .ampliada .ant { left: -62px; }
 .ampliada .prox { right: -62px; }
 
-/* Depoimentos */
-.depoimentos li { position: relative; background: var(--branco); }
-.depoimentos .aspas { color: var(--vermelho); }
-.depoimentos blockquote { margin: 14px 0 18px; font-family: var(--serif); font-size: 21px; line-height: 1.3; }
-.depoimentos .autor { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--cinza); }
-.depoimentos .autor strong { color: var(--tinta); font-weight: 600; }
-.nota { text-align: center; color: var(--cinza-claro); font-size: 12px; margin: 24px 0 0; }
+/* Depoimentos: vitrine com um depoimento por vez */
+.vitrine { padding: 72px 0 64px; }
+.vitrine-caixa { position: relative; max-width: 860px; margin: 0 auto; text-align: center; padding-top: 54px; }
+.aspas-grande { position: absolute; left: 50%; top: -24px; transform: translateX(-50%); font-size: 150px; line-height: 1; color: var(--vermelho); pointer-events: none; }
+.vitrine-slides { display: grid; }
+.vitrine-slides figure { grid-area: 1 / 1; margin: 0; opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .8s cubic-bezier(.2, .7, .2, 1); pointer-events: none; }
+.vitrine-slides figure.ativa { opacity: 1; transform: none; pointer-events: auto; transition-delay: .25s; }
+.vitrine-slides blockquote { margin: 0; font-size: clamp(25px, 3vw, 38px); line-height: 1.25; max-width: 30ch; margin-inline: auto; }
+.vitrine-slides figcaption { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; text-align: left; }
+.inicial { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--tinta); color: var(--creme); font-family: var(--serif); font-size: 18px; font-weight: 600; letter-spacing: 0.04em; flex: none; }
+.quem { display: flex; flex-direction: column; gap: 1px; font-size: 13px; color: var(--cinza); }
+.quem strong { color: var(--tinta); font-weight: 600; font-size: 14px; }
+.vitrine-controles { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 38px; }
+.vitrine-controles .ant, .vitrine-controles .prox { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(30, 27, 24, 0.3); background: transparent; color: var(--tinta); cursor: pointer; display: grid; place-items: center; transition: background .25s, color .25s, border-color .25s; }
+.vitrine-controles .ant:hover, .vitrine-controles .prox:hover { background: var(--tinta); color: var(--creme); border-color: var(--tinta); }
+.vitrine-controles svg { width: 16px; height: 16px; }
+.pontos { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; }
+.pontos button { position: relative; width: 36px; height: 32px; border: 0; background: transparent; cursor: pointer; padding: 0; }
+.pontos button::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: rgba(30, 27, 24, 0.18); }
+.pontos .barra { position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--vermelho); transform: scaleX(0); transform-origin: left; }
+.pontos button[aria-current="true"]::before { background: rgba(30, 27, 24, 0.4); }
+.pontos button.enchendo .barra { animation: encher var(--dur, 7s) linear forwards; }
+.pontos button[aria-current="true"]:not(.enchendo) .barra { transform: scaleX(1); }
+@keyframes encher { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Depoimentos: mural com todos, em cartoes escalonados */
+.mural { background: var(--areia); }
+.mural-lista { list-style: none; margin: 44px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+.mural-lista li { position: relative; background: var(--creme); border: 1px solid var(--linha); padding: 44px 28px 28px; transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s, border-color .45s; }
+.mural-lista li:nth-child(3n+2) { margin-top: 44px; }
+.mural-lista li:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(30, 27, 24, 0.12); border-color: rgba(30, 27, 24, 0.3); }
+.mural-lista .aspas { position: absolute; left: 24px; top: -4px; font-size: 92px; line-height: 1; color: var(--vermelho); }
+.mural-lista blockquote { margin: 0 0 22px; font-size: 22px; line-height: 1.3; }
+.mural-lista .autor { margin: 0; display: flex; align-items: center; gap: 12px; }
+.mural-lista .inicial { width: 40px; height: 40px; font-size: 16px; }
+.nota { text-align: center; color: var(--cinza-claro); font-size: 12px; margin: 28px 0 0; }
 
 /* Contato */
 .contato-secao .duas { grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr); align-items: start; }
@@ -257,6 +286,9 @@ button.botao:hover { background: var(--tinta); color: var(--creme); }
   .galeria { grid-template-columns: repeat(3, 1fr); }
   .ampliada .ant { left: 10px; }
   .ampliada .prox { right: 10px; }
+  .mural-lista { grid-template-columns: repeat(2, 1fr); }
+  .mural-lista li:nth-child(3n+2) { margin-top: 0; }
+  .mural-lista li:nth-child(2n) { margin-top: 36px; }
 }
 
 /* Celular */
@@ -312,6 +344,16 @@ button.botao:hover { background: var(--tinta); color: var(--creme); }
   .galeria .mais { display: none; }
   .filtros { gap: 0 16px; }
   .destaque { grid-template-columns: 1fr; gap: 22px; padding: 28px 0; }
+  .vitrine { padding: 52px 0 48px; }
+  .vitrine-caixa { padding-top: 40px; }
+  .aspas-grande { font-size: 110px; top: -16px; }
+  .vitrine-slides figcaption { margin-top: 24px; }
+  .vitrine-controles { gap: 12px; margin-top: 28px; }
+  .pontos button { width: 22px; }
+  .mural-lista { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  .mural-lista li:nth-child(3n+2) { margin-top: 0; }
+  .mural-lista li { padding: 40px 22px 24px; }
+  .mural-lista blockquote { font-size: 20px; }
   .destaque.invertido .destaque-foto { order: 0; }
   .destaques > .miolo > h2 { margin-bottom: 20px; }
   .tira { grid-template-columns: 1fr; }
@@ -443,6 +485,7 @@ html.js .lista-check li.visto .tique { stroke-dashoffset: 0; }
   html.js .ripado .ripa { clip-path: none; transition: none; }
   .ripa img, .destaque-foto img { transform: none; }
   .gira > span { transition: none; }
+  .pontos button[aria-current="true"] .barra { transform: scaleX(1); }
 }
 @media (max-width: 1100px) {
   .frases { grid-template-columns: 1fr; gap: 28px; }

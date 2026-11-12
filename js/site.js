@@ -50,6 +50,40 @@
     }, 2800);
   });
 
+  // Vitrine de depoimentos: um por vez, troca sozinha a cada 7 s (para no mouse e fora da tela); setas, pontos e arraste
+  var vitrine = document.querySelector('.vitrine-caixa');
+  if (vitrine) {
+    var figs = Array.prototype.slice.call(vitrine.querySelectorAll('.vitrine-slides figure'));
+    var pontos = Array.prototype.slice.call(vitrine.querySelectorAll('.pontos button'));
+    var kv = 0, timerV = null, DURV = 7000, naTela = true, pausado = false;
+    vitrine.style.setProperty('--dur', DURV + 'ms');
+    var irPara = function (i) {
+      kv = (i + figs.length) % figs.length;
+      figs.forEach(function (f, j) { f.classList.toggle('ativa', j === kv); });
+      pontos.forEach(function (b, j) {
+        b.classList.remove('enchendo');
+        if (j === kv) { b.setAttribute('aria-current', 'true'); if (timerV) { void b.offsetWidth; b.classList.add('enchendo'); } }
+        else b.removeAttribute('aria-current');
+      });
+    };
+    var desligarV = function () { if (timerV) { clearInterval(timerV); timerV = null; } pontos.forEach(function (b) { b.classList.remove('enchendo'); }); };
+    var ligarV = function () { if (semMovimento || timerV || !naTela || pausado || document.hidden) return; timerV = setInterval(function () { irPara(kv + 1); }, DURV); irPara(kv); };
+    var reiniciarV = function (i) { desligarV(); irPara(i); ligarV(); };
+    vitrine.querySelector('.ant').addEventListener('click', function () { reiniciarV(kv - 1); });
+    vitrine.querySelector('.prox').addEventListener('click', function () { reiniciarV(kv + 1); });
+    pontos.forEach(function (b, j) { b.addEventListener('click', function () { reiniciarV(j); }); });
+    vitrine.addEventListener('mouseenter', function () { pausado = true; desligarV(); });
+    vitrine.addEventListener('mouseleave', function () { pausado = false; ligarV(); });
+    var xv = null;
+    vitrine.addEventListener('touchstart', function (e) { xv = e.touches[0].clientX; }, { passive: true });
+    vitrine.addEventListener('touchend', function (e) { if (xv === null) return; var dx = e.changedTouches[0].clientX - xv; xv = null; if (Math.abs(dx) > 40) reiniciarV(dx < 0 ? kv + 1 : kv - 1); }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { naTela = e.isIntersecting; if (naTela) ligarV(); else desligarV(); }); }, { threshold: 0.3 }).observe(vitrine);
+    } else { ligarV(); }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) desligarV(); else ligarV(); });
+    irPara(0);
+  }
+
   // Linha do tempo das etapas: a barra avanca conforme a secao atravessa a tela
   var linhas = Array.prototype.slice.call(document.querySelectorAll('.linha-do-tempo'));
   if (linhas.length && !semMovimento) {

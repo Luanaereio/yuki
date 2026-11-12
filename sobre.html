@@ -35,16 +35,24 @@
 </header>
 
 <main>
-  <section class="banner">
-    <img class="banner-foto" src="img/sobre-equipe.jpg" alt="" width="1800" height="1200" fetchpriority="high">
+  <section class="cabeceira" data-mouse>
     <div class="miolo">
-      <p class="rotulo entra" style="--i:0">Sobre nós</p>
-      <h1 class="serif"><span class="linha" style="--i:0">Mais do que espaços,</span><span class="linha" style="--i:1">criamos histórias.</span></h1>
-      <p class="lead entra" style="--i:3">Projetos residenciais, comerciais e corporativos com foco em funcionalidade, estética e personalidade.</p>
+      <div class="cabeceira-texto">
+        <p class="rotulo entra" style="--i:0">Sobre nós</p>
+        <h1 class="serif"><span class="linha" style="--i:0">Mais do que</span><span class="linha" style="--i:1">espaços, criamos</span><span class="linha" style="--i:2"><span class="script">histórias.</span></span></h1>
+        <p class="lead entra" style="--i:3">Projetos residenciais, comerciais e corporativos com foco em funcionalidade, estética e personalidade.</p>
+        <ul class="selos entra" style="--i:4" aria-label="Áreas de atuação"><li>Residencial</li><li>Comercial</li><li>Corporativo</li></ul>
+        <a class="rolar entra" style="--i:5" href="#quem-somos"><span class="fio" aria-hidden="true"></span>Conheça o estúdio</a>
+      </div>
+      <div class="cabeceira-fotos" aria-hidden="true">
+        <span class="moldura-fora"></span>
+        <figure class="principal"><img src="img/sobre-equipe.jpg" alt="" width="1400" height="933" fetchpriority="high"></figure>
+        <figure class="apoio"><img src="img/servicos-maquete.jpg" alt="" width="1400" height="933"></figure>
+      </div>
     </div>
   </section>
 
-  <section class="secao quem-somos">
+  <section class="secao quem-somos" id="quem-somos">
     <div class="miolo">
       <p class="rotulo revela">Quem somos</p>
       <h2 class="serif grande revela" style="--atraso:.1s">Antes de qualquer desenho, a gente quer entender como você <span class="gira"><span class="ativa">vive.</span><span>trabalha.</span><span>recebe.</span><span>descansa.</span></span></h2>

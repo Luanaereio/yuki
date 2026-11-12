@@ -35,6 +35,17 @@
     medirParalaxe();
   }
 
+  // Fotos que seguem o mouse: [data-mouse] recebe --mx e --my de -1 a 1 (so com mouse de verdade)
+  Array.prototype.forEach.call(document.querySelectorAll('[data-mouse]'), function (area) {
+    if (semMovimento || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    area.addEventListener('mousemove', function (e) {
+      var r = area.getBoundingClientRect();
+      area.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+      area.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+    });
+    area.addEventListener('mouseleave', function () { area.style.setProperty('--mx', '0'); area.style.setProperty('--my', '0'); });
+  });
+
   // Palavra que gira no titulo (.gira): a atual sobe e some, a proxima entra por baixo
   Array.prototype.forEach.call(document.querySelectorAll('.gira'), function (g) {
     var palavras = Array.prototype.slice.call(g.children);

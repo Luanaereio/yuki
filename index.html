@@ -64,7 +64,10 @@
 
   /* Heroi */
   .heroi { position: relative; min-height: clamp(520px, 44vw, 640px); display: flex; align-items: center; color: var(--branco); background: #171412; overflow: hidden; isolation: isolate; }
-  .heroi .fundo { position: absolute; top: 0; right: 0; bottom: 0; z-index: -2; width: 76%; height: 100%; object-fit: cover; object-position: 55% 50%; }
+  .heroi .slides { position: absolute; inset: 0; z-index: -2; }
+  .heroi .fundo { position: absolute; top: 0; right: 0; bottom: 0; width: 76%; height: 100%; object-fit: cover; object-position: 55% 50%; }
+  .heroi video.fundo { opacity: 0; transition: opacity 1.6s ease; background: transparent; }
+  .heroi video.fundo.ativo { opacity: 1; }
   .heroi::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #171412 0%, #171412 18%, rgba(23,20,18,0.92) 27%, rgba(23,20,18,0.62) 38%, rgba(23,20,18,0.28) 56%, rgba(23,20,18,0.12) 78%, rgba(23,20,18,0.4) 100%), linear-gradient(180deg, rgba(14,12,11,0.5) 0%, rgba(14,12,11,0) 32%); }
   .heroi .miolo { display: grid; grid-template-columns: minmax(0, 560px) 1fr; align-items: end; gap: 32px; padding-top: 116px; padding-bottom: 50px; }
   .heroi .rotulo { color: rgba(255,255,255,0.78); }
@@ -210,7 +213,13 @@
 
 <main>
   <section class="heroi" id="inicio">
-    <img class="fundo" src="img/hero.jpg" alt="" width="2048" height="890" fetchpriority="high">
+    <div class="slides" aria-hidden="true">
+      <img class="fundo poster" src="img/hero.jpg" alt="" width="1358" height="762" fetchpriority="high">
+      <video class="fundo" muted playsinline loop preload="none" data-pc="video/clip-1.mp4" data-cel="video/clip-1-m.mp4"></video>
+      <video class="fundo" muted playsinline loop preload="none" data-pc="video/clip-2.mp4" data-cel="video/clip-2-m.mp4"></video>
+      <video class="fundo" muted playsinline loop preload="none" data-pc="video/clip-3.mp4" data-cel="video/clip-3-m.mp4"></video>
+      <video class="fundo" muted playsinline loop preload="none" data-pc="video/clip-4.mp4" data-cel="video/clip-4-m.mp4"></video>
+    </div>
     <div class="miolo">
       <div>
         <p class="rotulo">Arquitetura e interiores</p>
@@ -335,6 +344,36 @@
     }
     window.addEventListener('scroll', marcar, { passive: true });
     marcar();
+
+    // Slide de videos do heroi: um clipe por vez, troca com fusao a cada 8 s; carrega so o atual e o proximo;
+    // para quando sai da tela ou a aba fica escondida; nao roda com "menos movimento" nem com economia de dados.
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.heroi video.fundo'));
+    var reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var economia = navigator.connection && navigator.connection.saveData;
+    if (slides.length && !reduzido && !economia) {
+      var cel = window.matchMedia('(max-width: 700px)').matches;
+      var atual = -1, timer = null, DURACAO = 8000;
+      function fonte(v) { if (!v.getAttribute('src')) { v.src = v.getAttribute(cel ? 'data-cel' : 'data-pc'); v.load(); } }
+      function acender(v) { v.classList.add('ativo'); }
+      function mostrar(i) {
+        var v = slides[i];
+        fonte(v);
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+        if (v.readyState >= 2) acender(v); else v.addEventListener('playing', function uma() { v.removeEventListener('playing', uma); acender(v); });
+        if (atual >= 0 && atual !== i) { var ant = slides[atual]; ant.classList.remove('ativo'); setTimeout(function () { if (!ant.classList.contains('ativo')) ant.pause(); }, 1800); }
+        atual = i;
+        fonte(slides[(i + 1) % slides.length]);
+      }
+      function proximo() { mostrar((atual + 1) % slides.length); }
+      function ligar() { if (timer) return; mostrar(atual < 0 ? 0 : atual); timer = setInterval(proximo, DURACAO); }
+      function desligar() { if (!timer) return; clearInterval(timer); timer = null; slides.forEach(function (v) { v.pause(); }); }
+      var heroi = document.getElementById('inicio');
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !document.hidden) ligar(); else desligar(); }); }, { threshold: 0.15 }).observe(heroi);
+      } else { ligar(); }
+      document.addEventListener('visibilitychange', function () { if (document.hidden) desligar(); else ligar(); });
+    }
   })();
 </script>
 </body>

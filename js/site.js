@@ -15,6 +15,41 @@
     }
   }
 
+  // Parallax leve: cada [data-paralaxe] recebe --s de -1 (abaixo da tela) a 1 (acima), e o CSS decide o que mexer
+  var paralaxes = Array.prototype.slice.call(document.querySelectorAll('[data-paralaxe]'));
+  if (paralaxes.length && !semMovimento) {
+    var pedido = false;
+    var medirParalaxe = function () {
+      pedido = false;
+      var alt = window.innerHeight;
+      paralaxes.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -alt || r.top > 2 * alt) return;
+        var s = ((r.top + r.height / 2) - alt / 2) / (alt / 2 + r.height / 2);
+        el.style.setProperty('--s', Math.max(-1, Math.min(1, s)).toFixed(3));
+      });
+    };
+    var agendarParalaxe = function () { if (!pedido) { pedido = true; requestAnimationFrame(medirParalaxe); } };
+    window.addEventListener('scroll', agendarParalaxe, { passive: true });
+    window.addEventListener('resize', agendarParalaxe);
+    medirParalaxe();
+  }
+
+  // Palavra que gira no titulo (.gira): a atual sobe e some, a proxima entra por baixo
+  Array.prototype.forEach.call(document.querySelectorAll('.gira'), function (g) {
+    var palavras = Array.prototype.slice.call(g.children);
+    if (palavras.length < 2 || semMovimento) return;
+    var k = Math.max(0, palavras.findIndex(function (p) { return p.classList.contains('ativa'); }));
+    setInterval(function () {
+      if (document.hidden) return;
+      var sai = palavras[k];
+      sai.classList.remove('ativa'); sai.classList.add('saiu');
+      setTimeout(function () { sai.classList.remove('saiu'); }, 700);
+      k = (k + 1) % palavras.length;
+      palavras[k].classList.add('ativa');
+    }, 2800);
+  });
+
   // Linha do tempo das etapas: a barra avanca conforme a secao atravessa a tela
   var linhas = Array.prototype.slice.call(document.querySelectorAll('.linha-do-tempo'));
   if (linhas.length && !semMovimento) {
@@ -118,17 +153,34 @@
     filtros.forEach(function (b) { b.addEventListener('click', function () { var c = b.getAttribute('data-filtro'); filtrar(c); if (history.replaceState) history.replaceState(null, '', c === 'todos' ? location.pathname : '#' + c); }); });
     var inicial = location.hash.replace('#', '');
     if (inicial && filtros.some(function (b) { return b.getAttribute('data-filtro') === inicial; })) filtrar(inicial);
+    // Foto ampliada: navega entre as fotos visiveis no filtro atual (setas, teclado e arraste), com contador
     var dialogo = document.getElementById('ampliada');
     if (dialogo && typeof dialogo.showModal === 'function') {
-      var img = dialogo.querySelector('img'), forte = dialogo.querySelector('strong'), span = dialogo.querySelector('p span');
-      itens.forEach(function (li) {
-        var b = li.querySelector('button');
-        b.addEventListener('click', function () {
-          img.src = b.getAttribute('data-foto'); img.alt = b.getAttribute('data-titulo') + ': ' + b.getAttribute('data-texto');
-          forte.textContent = b.getAttribute('data-titulo'); span.textContent = b.getAttribute('data-texto');
-          dialogo.showModal();
-        });
+      var img = dialogo.querySelector('img'), forte = dialogo.querySelector('strong'), desc = dialogo.querySelector('.desc'), contador = dialogo.querySelector('.contador');
+      var lista = [], pos = 0;
+      var mostrarFoto = function (i) {
+        pos = (i + lista.length) % lista.length;
+        var b = lista[pos];
+        img.src = b.getAttribute('data-foto'); img.alt = b.getAttribute('data-titulo') + ': ' + b.getAttribute('data-texto');
+        forte.textContent = b.getAttribute('data-titulo'); desc.textContent = b.getAttribute('data-texto');
+        contador.textContent = (pos + 1) + ' / ' + lista.length;
+      };
+      var abrirFoto = function (b) {
+        lista = itens.filter(function (li) { return !li.classList.contains('oculto'); }).map(function (li) { return li.querySelector('button'); });
+        if (lista.indexOf(b) < 0) lista = itens.map(function (li) { return li.querySelector('button'); });
+        mostrarFoto(lista.indexOf(b));
+        dialogo.showModal();
+      };
+      itens.forEach(function (li) { var b = li.querySelector('button'); b.addEventListener('click', function () { abrirFoto(b); }); });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-abrir]'), function (d) {
+        d.addEventListener('click', function () { var li = itens[parseInt(d.getAttribute('data-abrir'), 10)]; if (li) abrirFoto(li.querySelector('button')); });
       });
+      dialogo.querySelector('.ant').addEventListener('click', function () { mostrarFoto(pos - 1); });
+      dialogo.querySelector('.prox').addEventListener('click', function () { mostrarFoto(pos + 1); });
+      dialogo.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { e.preventDefault(); mostrarFoto(pos - 1); } if (e.key === 'ArrowRight') { e.preventDefault(); mostrarFoto(pos + 1); } });
+      var x0 = null;
+      dialogo.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      dialogo.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) mostrarFoto(dx < 0 ? pos + 1 : pos - 1); }, { passive: true });
       dialogo.querySelector('.fechar').addEventListener('click', function () { dialogo.close(); });
       dialogo.addEventListener('click', function (e) { if (e.target === dialogo) dialogo.close(); });
       dialogo.addEventListener('close', function () { img.removeAttribute('src'); });

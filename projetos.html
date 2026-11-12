@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos · Yuki Design de Interiores</title>
+<meta name="description" content="Portfólio da Yuki Design de Interiores: apartamentos, residências, obras comerciais, showroom, cozinhas e banheiros.">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&family=Parisienne&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="pagina-projetos">
+
+<header class="topo" id="topo">
+  <div class="miolo">
+    <a class="marca" href="index.html" aria-label="Yuki Design de Interiores, início">
+      <img src="img/logo-branca.png" alt="Yuki" width="190" height="80">
+      <small>design de interiores</small>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre nós</a></li>
+        <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="depoimentos.html">Depoimentos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="botao claro" href="contato.html">Solicite um orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="banner" style="background-image: url('img/proj-apartamento-itaim.jpg')">
+    <div class="miolo">
+      <p class="rotulo">Portfólio</p>
+      <h1 class="serif">Inspiração em<br>cada detalhe.</h1>
+      <p class="lead">Uma seleção de ambientes que projetamos e acompanhamos até a entrega.</p>
+    </div>
+  </section>
+
+  <section class="secao galeria-secao">
+    <div class="miolo">
+      <div class="filtros" role="tablist" aria-label="Filtrar por tipo">
+        <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-filtro="apartamentos" aria-pressed="false">Apartamentos</button>
+        <button type="button" data-filtro="residencial" aria-pressed="false">Residencial</button>
+        <button type="button" data-filtro="comercial" aria-pressed="false">Obras comerciais</button>
+        <button type="button" data-filtro="showroom" aria-pressed="false">Showroom</button>
+        <button type="button" data-filtro="cozinhas" aria-pressed="false">Cozinhas e banheiros</button>
+      </div>
+      <ul class="galeria">
+        <li data-categoria="apartamentos"><button type="button" data-foto="img/proj-apartamento-itaim.jpg" data-titulo="Apartamento Itaim" data-texto="Living integrado com painel ripado de madeira e iluminação indireta"><img src="img/proj-apartamento-itaim.jpg" alt="Apartamento Itaim: Living integrado com painel ripado de madeira e iluminação indireta" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Apartamentos</span><span class="nome">Apartamento Itaim</span></span></button></li>
+        <li data-categoria="apartamentos"><button type="button" data-foto="img/proj-apartamento-tv.jpg" data-titulo="Apartamento com painel de madeira" data-texto="Sala de estar com painel de TV em madeira e sofá em tom grafite"><img src="img/proj-apartamento-tv.jpg" alt="Apartamento com painel de madeira: Sala de estar com painel de TV em madeira e sofá em tom grafite" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Apartamentos</span><span class="nome">Apartamento com painel de madeira</span></span></button></li>
+        <li data-categoria="apartamentos"><button type="button" data-foto="img/proj-apartamento-2.jpg" data-titulo="Apartamento com living ampliado" data-texto="Living com cortinas em linho e marcenaria sob medida"><img src="img/proj-apartamento-2.jpg" alt="Apartamento com living ampliado: Living com cortinas em linho e marcenaria sob medida" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Apartamentos</span><span class="nome">Apartamento com living ampliado</span></span></button></li>
+        <li data-categoria="residencial"><button type="button" data-foto="img/proj-residencial.jpg" data-titulo="Residência com pé-direito duplo" data-texto="Mezanino com guarda-corpo em metal e parede de quadros"><img src="img/proj-residencial.jpg" alt="Residência com pé-direito duplo: Mezanino com guarda-corpo em metal e parede de quadros" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Residencial</span><span class="nome">Residência com pé-direito duplo</span></span></button></li>
+        <li data-categoria="residencial"><button type="button" data-foto="img/proj-escada.jpg" data-titulo="Escada em madeira" data-texto="Escada revestida em madeira clara com corrimão discreto"><img src="img/proj-escada.jpg" alt="Escada em madeira: Escada revestida em madeira clara com corrimão discreto" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Residencial</span><span class="nome">Escada em madeira</span></span></button></li>
+        <li data-categoria="residencial"><button type="button" data-foto="img/proj-quarto.jpg" data-titulo="Suíte master" data-texto="Cabeceira estofada e iluminação de leitura embutida"><img src="img/proj-quarto.jpg" alt="Suíte master: Cabeceira estofada e iluminação de leitura embutida" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Residencial</span><span class="nome">Suíte master</span></span></button></li>
+        <li data-categoria="residencial"><button type="button" data-foto="img/proj-quarto-2.jpg" data-titulo="Quarto com tijolo aparente" data-texto="Parede de tijolos, luminárias pendentes e roupa de cama em tons neutros"><img src="img/proj-quarto-2.jpg" alt="Quarto com tijolo aparente: Parede de tijolos, luminárias pendentes e roupa de cama em tons neutros" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Residencial</span><span class="nome">Quarto com tijolo aparente</span></span></button></li>
+        <li data-categoria="cozinhas"><button type="button" data-foto="img/proj-cozinha.jpg" data-titulo="Cozinha escura com madeira" data-texto="Armários pretos, bancada em madeira e eletrodomésticos embutidos"><img src="img/proj-cozinha.jpg" alt="Cozinha escura com madeira: Armários pretos, bancada em madeira e eletrodomésticos embutidos" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Cozinhas e banheiros</span><span class="nome">Cozinha escura com madeira</span></span></button></li>
+        <li data-categoria="cozinhas"><button type="button" data-foto="img/proj-cozinha-2.jpg" data-titulo="Cozinha com ilha" data-texto="Ilha central, iluminação pendente e marcenaria em tom claro"><img src="img/proj-cozinha-2.jpg" alt="Cozinha com ilha: Ilha central, iluminação pendente e marcenaria em tom claro" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Cozinhas e banheiros</span><span class="nome">Cozinha com ilha</span></span></button></li>
+        <li data-categoria="cozinhas"><button type="button" data-foto="img/proj-banheiro.jpg" data-titulo="Banheiro com bancada de madeira" data-texto="Banheira de imersão, cuba dupla e marcenaria em madeira"><img src="img/proj-banheiro.jpg" alt="Banheiro com bancada de madeira: Banheira de imersão, cuba dupla e marcenaria em madeira" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Cozinhas e banheiros</span><span class="nome">Banheiro com bancada de madeira</span></span></button></li>
+        <li data-categoria="comercial"><button type="button" data-foto="img/proj-restaurante.jpg" data-titulo="Restaurante" data-texto="Salão com iluminação quente, mesas em madeira e forro ripado"><img src="img/proj-restaurante.jpg" alt="Restaurante: Salão com iluminação quente, mesas em madeira e forro ripado" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Obras comerciais</span><span class="nome">Restaurante</span></span></button></li>
+        <li data-categoria="comercial"><button type="button" data-foto="img/proj-cafe.jpg" data-titulo="Cafeteria" data-texto="Balcão de atendimento com vitrine e prateleiras em madeira"><img src="img/proj-cafe.jpg" alt="Cafeteria: Balcão de atendimento com vitrine e prateleiras em madeira" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Obras comerciais</span><span class="nome">Cafeteria</span></span></button></li>
+        <li data-categoria="comercial"><button type="button" data-foto="img/proj-corporativo.jpg" data-titulo="Escritório corporativo" data-texto="Área de convivência com estantes e iluminação linear"><img src="img/proj-corporativo.jpg" alt="Escritório corporativo: Área de convivência com estantes e iluminação linear" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Obras comerciais</span><span class="nome">Escritório corporativo</span></span></button></li>
+        <li data-categoria="comercial"><button type="button" data-foto="img/proj-escritorio-2.jpg" data-titulo="Sala de diretoria" data-texto="Mesa em madeira, poltronas em couro e luminária circular"><img src="img/proj-escritorio-2.jpg" alt="Sala de diretoria: Mesa em madeira, poltronas em couro e luminária circular" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Obras comerciais</span><span class="nome">Sala de diretoria</span></span></button></li>
+        <li data-categoria="comercial"><button type="button" data-foto="img/proj-escritorio.jpg" data-titulo="Espaço de trabalho" data-texto="Estações de trabalho com plantas e luz natural"><img src="img/proj-escritorio.jpg" alt="Espaço de trabalho: Estações de trabalho com plantas e luz natural" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Obras comerciais</span><span class="nome">Espaço de trabalho</span></span></button></li>
+        <li data-categoria="showroom"><button type="button" data-foto="img/proj-showroom.jpg" data-titulo="Showroom" data-texto="Exposição de mobiliário em ambiente com pé-direito alto"><img src="img/proj-showroom.jpg" alt="Showroom: Exposição de mobiliário em ambiente com pé-direito alto" width="900" height="600" loading="lazy"><span class="legenda"><span class="cat">Showroom</span><span class="nome">Showroom</span></span></button></li>
+      </ul>
+    </div>
+  </section>
+
+  <dialog class="ampliada" id="ampliada" aria-label="Foto ampliada">
+    <button type="button" class="fechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <img src="" alt="">
+    <p><strong></strong><span></span></p>
+  </dialog>
+
+  <section class="chamada" id="contato-chamada">
+    <img class="fundo" src="img/cta.jpg" alt="" width="1800" height="1200" loading="lazy">
+    <div class="miolo">
+      <p class="script">Vamos<br>conversar?</p>
+      <div>
+        <h2 class="serif">Seu projeto começa<br>com uma ideia.</h2>
+        <p>Entre em contato e vamos transformar seu espaço em realidade.</p>
+      </div>
+      <a class="botao cheio" href="contato.html">Solicite um orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="miolo linha-1">
+    <a class="marca" href="index.html" aria-label="Yuki Design de Interiores, início">
+      <img src="img/logo-branca.png" alt="Yuki" width="190" height="80">
+      <small>design de interiores</small>
+    </a>
+    <nav aria-label="Rodapé">
+      <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre nós</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="redes">
+      <div class="icones">
+        <a href="#" data-contato="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" data-contato="whatsapp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a4 4 0 0 1-2-2l1-1-1-2z"/></svg></a>
+      </div>
+      <p class="frase">Transformando espaços em novas histórias. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.3c0 5.4-7.5 10-7.5 10z"/></svg></p>
+    </div>
+  </div>
+  <div class="miolo linha-2">© 2024 Yuki Design de Interiores. Todos os direitos reservados.</div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

@@ -35,48 +35,85 @@
 </header>
 
 <main>
-  <section class="banner" style="background-image: url('img/servicos-reuniao.jpg')">
+  <section class="banner">
+    <img class="banner-foto" src="img/servicos-reuniao.jpg" alt="" width="1800" height="1200" fetchpriority="high">
     <div class="miolo">
-      <p class="rotulo">Serviços</p>
-      <h1 class="serif">Do projeto à execução,<br>cada detalhe pensado.</h1>
-      <p class="lead">Escolha o quanto de acompanhamento você precisa: da consultoria pontual à reforma completa.</p>
+      <p class="rotulo entra" style="--i:0">Serviços</p>
+      <h1 class="serif"><span class="linha" style="--i:0">Do projeto à execução,</span><span class="linha" style="--i:1">cada detalhe pensado.</span></h1>
+      <p class="lead entra" style="--i:3">Escolha o quanto de acompanhamento você precisa: da consultoria pontual à reforma completa.</p>
     </div>
   </section>
+  <div class="letreiro" aria-hidden="true"><div class="trilho"><span>Projeto</span><span class="sep" aria-hidden="true"></span><span>Consultoria</span><span class="sep" aria-hidden="true"></span><span>Detalhamento</span><span class="sep" aria-hidden="true"></span><span>Acompanhamento</span><span class="sep" aria-hidden="true"></span><span>Reforma</span><span class="sep" aria-hidden="true"></span><span>Entrega</span><span class="sep" aria-hidden="true"></span><span>Projeto</span><span class="sep" aria-hidden="true"></span><span>Consultoria</span><span class="sep" aria-hidden="true"></span><span>Detalhamento</span><span class="sep" aria-hidden="true"></span><span>Acompanhamento</span><span class="sep" aria-hidden="true"></span><span>Reforma</span><span class="sep" aria-hidden="true"></span><span>Entrega</span><span class="sep" aria-hidden="true"></span></div></div>
 
-  <section class="secao">
-    <div class="miolo">
-      <ul class="cartoes tres servicos-lista">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-5.5h4v5.5"/></svg><h3>Projeto de interiores residencial</h3><p>Apartamentos e casas: layout, marcenaria, iluminação, revestimentos e mobiliário, do estudo preliminar ao projeto executivo.</p></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V5.5h9V20M13 10h7v10M3 20h18"/><path d="M7 9h3M7 12.5h3M7 16h3M16 13.5h1.5M16 17h1.5"/></svg><h3>Projetos comerciais e corporativos</h3><p>Lojas, restaurantes, consultórios e escritórios: espaços que traduzem a marca e funcionam para quem trabalha e para quem visita.</p></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M4 11.5a1.5 1.5 0 0 1 1.5 1.5v2h13v-2a1.5 1.5 0 0 1 3 0v4.5H4z"/><path d="M6 17.5V19.5M18 17.5V19.5"/></svg><h3>Consultoria de decoração</h3><p>Para quem quer renovar sem obra: escolha de móveis, cores, cortinas, tapetes, objetos e iluminação, com lista de compras e orientação.</p></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11M13 13h4M13 16h4"/></svg><h3>Projeto executivo e detalhamento</h3><p>Desenhos de marcenaria, pontos de elétrica e hidráulica, forro e iluminação, paginação de revestimentos e especificação de materiais.</p></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16.5h16"/><path d="M5.5 16.5a6.5 6.5 0 0 1 13 0"/><path d="M12 7.5v2.5M10.5 7.5h3"/><path d="M3 19h18"/></svg><h3>Acompanhamento de obra</h3><p>Visitas técnicas, conferência do que foi projetado, alinhamento com marceneiros, eletricistas e demais equipes até a entrega.</p></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg><h3>Reforma e execução</h3><p>Gerenciamento completo da reforma com fornecedores parceiros: orçamento, cronograma, compras e entrega do ambiente pronto.</p></li>
+  <section class="secao servicos-fixo">
+    <div class="miolo duas-fixo">
+      <div class="quadro-fixo revela">
+        <div class="quadro">
+          <img src="img/proj-apartamento-tv.jpg" alt="" width="900" height="600" data-servico="0" class="ativo">
+          <img src="img/proj-restaurante.jpg" alt="" width="900" height="600" data-servico="1">
+          <img src="img/proj-apartamento-2.jpg" alt="" width="900" height="600" data-servico="2">
+          <img src="img/servicos-planta.jpg" alt="" width="900" height="600" data-servico="3">
+          <img src="img/servicos-maquete.jpg" alt="" width="900" height="600" data-servico="4">
+          <img src="img/proj-cozinha.jpg" alt="" width="900" height="600" data-servico="5">
+          <span class="moldura" aria-hidden="true"></span>
+        </div>
+      </div>
+      <ul class="servicos-editorial">
+        <li class="revela" data-servico="0" style="--atraso:0.00s"><img class="foto-mini" src="img/proj-apartamento-tv.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-5.5h4v5.5"/></svg></span><h3>Projeto de interiores residencial</h3></div><p>Apartamentos e casas: layout, marcenaria, iluminação, revestimentos e mobiliário, do estudo preliminar ao projeto executivo.</p><ul class="itens"><li>Estudo preliminar e layout</li><li>Marcenaria e iluminação</li><li>Revestimentos e mobiliário</li><li>Projeto executivo</li></ul></li>
+        <li class="revela" data-servico="1" style="--atraso:0.06s"><img class="foto-mini" src="img/proj-restaurante.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V5.5h9V20M13 10h7v10M3 20h18"/><path d="M7 9h3M7 12.5h3M7 16h3M16 13.5h1.5M16 17h1.5"/></svg></span><h3>Projetos comerciais e corporativos</h3></div><p>Lojas, restaurantes, consultórios e escritórios: espaços que traduzem a marca e funcionam para quem trabalha e para quem visita.</p><ul class="itens"><li>Conceito alinhado à marca</li><li>Fluxo de clientes e equipe</li><li>Fachada, vitrine e iluminação</li><li>Projeto para aprovação</li></ul></li>
+        <li class="revela" data-servico="2" style="--atraso:0.12s"><img class="foto-mini" src="img/proj-apartamento-2.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M4 11.5a1.5 1.5 0 0 1 1.5 1.5v2h13v-2a1.5 1.5 0 0 1 3 0v4.5H4z"/><path d="M6 17.5V19.5M18 17.5V19.5"/></svg></span><h3>Consultoria de decoração</h3></div><p>Para quem quer renovar sem obra: escolha de móveis, cores, cortinas, tapetes, objetos e iluminação, com lista de compras e orientação.</p><ul class="itens"><li>Visita e diagnóstico</li><li>Paleta de cores e tecidos</li><li>Seleção de móveis e objetos</li><li>Lista de compras</li></ul></li>
+        <li class="revela" data-servico="3" style="--atraso:0.18s"><img class="foto-mini" src="img/servicos-planta.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11M13 13h4M13 16h4"/></svg></span><h3>Projeto executivo e detalhamento</h3></div><p>Desenhos de marcenaria, pontos de elétrica e hidráulica, forro e iluminação, paginação de revestimentos e especificação de materiais.</p><ul class="itens"><li>Detalhamento de marcenaria</li><li>Elétrica, hidráulica e forro</li><li>Paginação de pisos e paredes</li><li>Memorial de especificações</li></ul></li>
+        <li class="revela" data-servico="4" style="--atraso:0.24s"><img class="foto-mini" src="img/servicos-maquete.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16.5h16"/><path d="M5.5 16.5a6.5 6.5 0 0 1 13 0"/><path d="M12 7.5v2.5M10.5 7.5h3"/><path d="M3 19h18"/></svg></span><h3>Acompanhamento de obra</h3></div><p>Visitas técnicas, conferência do que foi projetado, alinhamento com marceneiros, eletricistas e demais equipes até a entrega.</p><ul class="itens"><li>Visitas técnicas periódicas</li><li>Conferência com o projeto</li><li>Alinhamento com fornecedores</li><li>Vistoria de entrega</li></ul></li>
+        <li class="revela" data-servico="5" style="--atraso:0.30s"><img class="foto-mini" src="img/proj-cozinha.jpg" alt="" width="900" height="600" loading="lazy"><div class="cabeca"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></span><h3>Reforma e execução</h3></div><p>Gerenciamento completo da reforma com fornecedores parceiros: orçamento, cronograma, compras e entrega do ambiente pronto.</p><ul class="itens"><li>Orçamento fechado</li><li>Cronograma e compras</li><li>Equipes parceiras</li><li>Entrega pronta para morar</li></ul></li>
       </ul>
     </div>
   </section>
 
-  <section class="secao tira-fotos">
+  <section class="secao perfis">
     <div class="miolo">
-      <ul class="tira">
-        <li><img src="img/servicos-maquete.jpg" alt="Maquete de projeto sobre a mesa de reunião" width="1400" height="933" loading="lazy"></li>
-        <li><img src="img/servicos-planta.jpg" alt="Equipe conferindo a planta do projeto" width="1400" height="933" loading="lazy"></li>
-        <li><img src="img/sobre-amostras.jpg" alt="Mostruário de revestimentos e materiais" width="1400" height="933" loading="lazy"></li>
+      <p class="rotulo centro revela">Para quem é</p>
+      <h2 class="serif centro revela" style="--atraso:.1s">Três jeitos de começar.</h2>
+      <ul class="perfis-lista">
+        <li class="revela" style="--atraso:0.10s"><a href="contato.html"><img src="img/proj-cozinha-2.jpg" alt="" width="900" height="600" loading="lazy"><span class="corpo"><span class="serif">Quero reformar</span><span class="desc">Vai mexer em paredes, cozinha ou banheiro? Projeto completo, com detalhamento para a obra e acompanhamento até a entrega.</span><span class="ir">Falar sobre o meu projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a></li>
+        <li class="revela" style="--atraso:0.22s"><a href="contato.html"><img src="img/proj-quarto-2.jpg" alt="" width="900" height="600" loading="lazy"><span class="corpo"><span class="serif">Quero renovar sem obra</span><span class="desc">Móveis, cores, cortinas, tapetes e iluminação: a consultoria transforma o ambiente em semanas, sem quebra-quebra.</span><span class="ir">Falar sobre o meu projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a></li>
+        <li class="revela" style="--atraso:0.34s"><a href="contato.html"><img src="img/proj-cafe.jpg" alt="" width="900" height="600" loading="lazy"><span class="corpo"><span class="serif">Tenho um negócio</span><span class="desc">Loja, restaurante, consultório ou escritório: um espaço que traduz a marca e funciona para quem trabalha e para quem visita.</span><span class="ir">Falar sobre o meu projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a></li>
       </ul>
     </div>
   </section>
 
   <section class="secao processo">
     <div class="miolo">
-      <p class="rotulo centro">Como funciona</p>
-      <h2 class="serif centro">Cinco etapas, sem surpresas.</h2>
-      <ol class="passos">
-        <li><span class="num">01</span><h3>Conversa inicial</h3><p>Ouvimos como você vive, o que precisa e o que sonha para o espaço. Visitamos o imóvel, medimos e entendemos o orçamento disponível.</p></li>
-        <li><span class="num">02</span><h3>Estudo e conceito</h3><p>Traduzimos a conversa em um conceito: plantas de layout, paleta de materiais e referências de atmosfera, apresentados para você escolher o caminho.</p></li>
-        <li><span class="num">03</span><h3>Projeto executivo</h3><p>Detalhamos tudo o que a obra precisa: marcenaria, iluminação, elétrica, hidráulica, revestimentos e mobiliário, com desenhos e especificações.</p></li>
-        <li><span class="num">04</span><h3>Orçamento e execução</h3><p>Cotamos com fornecedores e equipes de confiança e organizamos o cronograma, para a obra começar com previsibilidade.</p></li>
-        <li><span class="num">05</span><h3>Acompanhamento e entrega</h3><p>Acompanhamos a execução de perto, resolvendo o que surge no caminho, até entregar o espaço pronto para ser vivido.</p></li>
-      </ol>
+      <p class="rotulo centro revela">Como funciona</p>
+      <h2 class="serif centro revela" style="--atraso:.1s">Cinco etapas, sem surpresas.</h2>
+      <div class="linha-do-tempo">
+        <span class="trilha" aria-hidden="true"><span class="progresso"></span></span>
+        <ol class="passos">
+          <li class="revela" style="--atraso:0.00s"><span class="num">01</span><h3>Conversa inicial</h3><p>Ouvimos como você vive, o que precisa e o que sonha para o espaço. Visitamos o imóvel, medimos e entendemos o orçamento disponível.</p></li>
+          <li class="revela" style="--atraso:0.12s"><span class="num">02</span><h3>Estudo e conceito</h3><p>Traduzimos a conversa em um conceito: plantas de layout, paleta de materiais e referências de atmosfera, apresentados para você escolher o caminho.</p></li>
+          <li class="revela" style="--atraso:0.24s"><span class="num">03</span><h3>Projeto executivo</h3><p>Detalhamos tudo o que a obra precisa: marcenaria, iluminação, elétrica, hidráulica, revestimentos e mobiliário, com desenhos e especificações.</p></li>
+          <li class="revela" style="--atraso:0.36s"><span class="num">04</span><h3>Orçamento e execução</h3><p>Cotamos com fornecedores e equipes de confiança e organizamos o cronograma, para a obra começar com previsibilidade.</p></li>
+          <li class="revela" style="--atraso:0.48s"><span class="num">05</span><h3>Acompanhamento e entrega</h3><p>Acompanhamos a execução de perto, resolvendo o que surge no caminho, até entregar o espaço pronto para ser vivido.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao inclui">
+    <div class="miolo duas">
+      <div>
+        <p class="rotulo revela">O que você recebe</p>
+        <h2 class="serif revela" style="--atraso:.1s">Tudo o que a obra e a decoração precisam, em mãos.</h2>
+        <p class="revela" style="--atraso:.2s">O conteúdo varia com o serviço escolhido; na consultoria, por exemplo, não há detalhamento de obra. Combinamos o escopo na primeira conversa.</p>
+      </div>
+      <ul class="lista-check">
+        <li class="revela" style="--atraso:0.10s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Plantas de layout e estudo de alternativas</span></li>
+        <li class="revela" style="--atraso:0.18s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Imagens 3D dos ambientes</span></li>
+        <li class="revela" style="--atraso:0.26s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Detalhamento de marcenaria sob medida</span></li>
+        <li class="revela" style="--atraso:0.34s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Projeto de iluminação</span></li>
+        <li class="revela" style="--atraso:0.42s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Especificação de materiais e acabamentos</span></li>
+        <li class="revela" style="--atraso:0.50s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Lista de compras com fornecedores</span></li>
+        <li class="revela" style="--atraso:0.58s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="tique" d="M7.5 12.5l3 3 6-7"/></svg><span>Acompanhamento da execução</span></li>
+      </ul>
     </div>
   </section>
 

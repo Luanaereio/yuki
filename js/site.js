@@ -1,7 +1,53 @@
 /* Yuki Design de Interiores: script unico das paginas, gerado por yuki-paginas.cjs */
 (function () {
+  document.documentElement.classList.add('js');
   // Canais de contato: preencher quando a cliente passar (WhatsApp com DDI e DDD, so numeros; Instagram so o usuario).
   var CONTATO = { whatsapp: '', email: '', instagram: '' };
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Aparecer ao rolar: cada .revela ganha .visto quando entra na tela (uma vez so)
+  var revelas = Array.prototype.slice.call(document.querySelectorAll('.revela'));
+  if (revelas.length) {
+    if (semMovimento || !('IntersectionObserver' in window)) { revelas.forEach(function (el) { el.classList.add('visto'); }); }
+    else {
+      var obsRevela = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visto'); obsRevela.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      revelas.forEach(function (el) { obsRevela.observe(el); });
+    }
+  }
+
+  // Linha do tempo das etapas: a barra avanca conforme a secao atravessa a tela
+  var linhas = Array.prototype.slice.call(document.querySelectorAll('.linha-do-tempo'));
+  if (linhas.length && !semMovimento) {
+    var medirLinha = function () {
+      linhas.forEach(function (l) {
+        var r = l.getBoundingClientRect(), alt = window.innerHeight;
+        var p = (alt * 0.85 - r.top) / (r.height + alt * 0.35);
+        l.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+      });
+    };
+    window.addEventListener('scroll', medirLinha, { passive: true });
+    window.addEventListener('resize', medirLinha);
+    medirLinha();
+  }
+
+  // Servicos: a foto fixa troca conforme o servico em foco (rolagem ou mouse)
+  var quadro = document.querySelector('.quadro');
+  var servicos = Array.prototype.slice.call(document.querySelectorAll('.servicos-editorial > li[data-servico]'));
+  if (quadro && servicos.length) {
+    var fotos = Array.prototype.slice.call(quadro.querySelectorAll('img[data-servico]'));
+    var focar = function (k) {
+      fotos.forEach(function (f) { f.classList.toggle('ativo', f.getAttribute('data-servico') === String(k)); });
+      servicos.forEach(function (s) { s.classList.toggle('foco', s.getAttribute('data-servico') === String(k)); });
+    };
+    focar(0);
+    servicos.forEach(function (s) { s.addEventListener('mouseenter', function () { focar(s.getAttribute('data-servico')); }); });
+    if ('IntersectionObserver' in window) {
+      var obsServ = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) focar(e.target.getAttribute('data-servico')); });
+      }, { rootMargin: '-40% 0px -45% 0px', threshold: 0 });
+      servicos.forEach(function (s) { obsServ.observe(s); });
+    }
+  }
 
   // Menu do celular
   var topo = document.getElementById('topo');
